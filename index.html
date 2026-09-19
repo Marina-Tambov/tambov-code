@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Культурный код Тамбовской области</title>
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --bg: #0f0c29;
+            --card: rgba(255,255,255,0.97);
+            --text: #2c3e50;
+            --muted: #7f8c8d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: linear-gradient(135deg, var(--bg) 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+        /* ===== HEADER ===== */
+        header {
+            background: var(--card);
+            padding: 50px 30px;
+            text-align: center;
+            border-radius: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        }
+        h1 {
+            font-size: 2.4em;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        .subtitle { font-size: 1.15em; color: var(--muted); margin-bottom: 6px; }
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-top: 14px;
+            font-size: 0.95em;
+        }
+
+        /* ===== GOAL BLOCK ===== */
+        .goal-block {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .goal-block h2 { color: var(--primary); margin-bottom: 15px; font-size: 1.6em; }
+        .goal-block p { color: #555; font-size: 1.05em; }
+
+        .cipher-demo {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.3em;
+            letter-spacing: 3px;
+        }
+        .cipher-demo .hint { color: #888; font-size: 0.7em; letter-spacing: 1px; margin-top: 8px; }
+
+        /* ===== HEROES ===== */
+        .heroes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 24px; margin-bottom: 35px; }
+        .hero-card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform .3s, box-shadow .3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .hero-card .icon { font-size: 3em; margin-bottom: 12px; }
+        .hero-card h2 { color: var(--primary); font-size: 1.5em; margin-bottom: 5px; }
+        .hero-card .role { color: var(--secondary); font-weight: 600; margin-bottom: 12px; }
+        .hero-card p { color: #666; font-size: 0.95em; }
+        .hero-card .detail {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: #f8f9ff;
+            border-left: 3px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline-section {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .timeline-section h2 { text-align: center; color: var(--primary); font-size: 1.8em; margin-bottom: 25px; }
+        .timeline { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+        .tl-item {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            padding: 14px 20px;
+            border-radius: 14px;
+            text-align: center;
+            min-width: 140px;
+            flex: 1;
+        }
+        .tl-item .time { font-size: 1.6em; font-weight: 800; }
+        .tl-item .label { font-size: 0.85em; opacity: 0.9; }
+
+        /* ===== STATIONS ===== */
+        .station {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .station > h2 {
+            color: var(--secondary);
+            font-size: 1.7em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .station > p.intro { color: #666; margin-bottom: 25px; font-size: 1.02em; }
+
+        .task {
+            background: #f8f9ff;
+            border: 1px solid #e8eaff;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 22px;
+        }
+        .task h3 { color: var(--primary); font-size: 1.25em; margin-bottom: 10px; }
+        .task p { color: #555; margin-bottom: 10px; }
+
+        /* ===== SHOW ANSWER BUTTON ===== */
+        .show-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: opacity .2s, transform .2s;
+            margin-top: 10px;
+        }
+        .show-btn:hover { opacity: 0.85; transform: scale(1.03); }
+        .answer-box {
+            display: none;
+            margin-top: 14px;
+            padding: 16px;
+            background: #eafff2;
+            border: 1px solid #b2f0cc;
+            border-radius: 12px;
+            color: #1a7a42;
+            font-weight: 600;
+        }
+        .answer-box.open { display: block; }
+
+        /* ===== CAESAR CIPHER INTERACTIVE ===== */
+        .cipher-game { margin: 20px 0; }
+        .cipher-encrypted {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+        .cipher-encrypted .enc-letter {
+            width: 52px; height: 52px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.5em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+        .cipher-arrow { text-align: center; font-size: 1.5em; color: var(--muted); margin-bottom: 10px; }
+        .cipher-slots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .cipher-slot {
+            width: 52px; height: 52px;
+            border: 2px dashed var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--primary);
+            background: #fff;
+            cursor: pointer;
+            transition: border-color .2s, background .2s, transform .2s;
+        }
+        .cipher-slot.active { border-color: var(--accent); background: #fff0fb; transform: scale(1.1); }
+        .cipher-slot.correct { border-color: var(--success); background: #eafff2; color: var(--success); }
+        .cipher-slot.wrong { border-color: var(--danger); background: #ffeaea; color: var(--danger); }
+        .cipher-slot.filled { border-style: solid; }
+
+        .alphabet-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .alpha-btn {
+            width: 44px; height: 44px;
+            border: 2px solid var(--primary);
+            background: #fff;
+            color: var(--primary);
+            font-size: 1.1em;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all .15s;
+        }
+        .alpha-btn:hover { background: var(--primary); color: #fff; transform: scale(1.1); }
+        .alpha-btn:active { transform: scale(0.95); }
+
+        .cipher-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+        .ctrl-btn {
+            padding: 10px 22px;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity .2s, transform .2s;
+        }
+        .ctrl-btn:hover { opacity: 0.85; transform: scale(1.03); }
+        .ctrl-btn.check { background: var(--success); color: #fff; }
+        .ctrl-btn.clear { background: var(--danger); color: #fff; }
+        .ctrl-btn.back { background: var(--warning); color: #fff; }
+
+        .cipher-result {
+            text-align: center;
+            margin-top: 14px;
+            font-size: 1.15em;
+            font-weight: 700;
+            min-height: 30px;
+        }
+        .cipher-result.success { color: var(--success); }
+        .cipher-result.fail { color: var(--danger); }
+
+        /* ===== LOGIC TABLE ===== */
+        .logic-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        .logic-table th, .logic-table td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        .logic-table th { background: var(--primary); color: #fff; }
+
+        /* ===== HINTS LIST ===== */
+        .hints { list-style: none; padding: 0; }
+        .hints li { padding: 6px 0 6px 28px; position: relative; }
+        .hints li::before { content: '🔍'; position: absolute; left: 0; }
+
+        /* ===== ARTIFACT ===== */
+        .artifact-section {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .artifact-section h2 { color: var(--secondary); font-size: 1.7em; margin-bottom: 20px; text-align: center; }
+        .artifact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }
+        .artifact-card {
+            background: linear-gradient(135deg, #f8f9ff, #eef0ff);
+            padding: 20px;
+            border-radius: 14px;
+            border: 1px solid #dde0ff;
+        }
+        .artifact-card h3 { color: var(--primary); margin-bottom: 10px; }
+        .artifact-card ul { padding-left: 20px; color: #555; }
+        .artifact-card li { margin-bottom: 5px; }
+        .materials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .mat-item {
+            background: #fff;
+            padding: 10px 18px;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+            font-size: 0.95em;
+        }
+
+        /* ===== REFLECTION ===== */
+        .reflection {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .reflection h2 { color: var(--secondary); font-size: 1.7em; margin-bottom: 20px; }
+        .refl-cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .refl-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            padding: 24px;
+            border-radius: 16px;
+            min-width: 180px;
+            flex: 1;
+            max-width: 280px;
+        }
+        .refl-card .num { font-size: 3em; font-weight: 800; }
+        .refl-card .desc { font-size: 0.95em; opacity: 0.9; }
+
+        /* ===== OBJECTIVES ===== */
+        .objectives {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .objectives h2 { text-align: center; color: var(--primary); font-size: 1.7em; margin-bottom: 25px; }
+        .obj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }
+        .obj-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            padding: 24px;
+            border-radius: 16px;
+        }
+        .obj-card h3 { margin-bottom: 12px; font-size: 1.2em; }
+        .obj-card ul { list-style: none; padding: 0; }
+        .obj-card li { padding: 5px 0 5px 24px; position: relative; }
+        .obj-card li::before { content: '✓'; position: absolute; left: 0; font-weight: 700; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            padding: 30px;
+            font-size: 0.95em;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.7em; }
+            .heroes { grid-template-columns: 1fr; }
+            .cipher-encrypted .enc-letter, .cipher-slot { width: 42px; height: 42px; font-size: 1.2em; }
+            .alpha-btn { width: 38px; height: 38px; font-size: 0.95em; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <header>
+        <h1>🔐 Культурный код Тамбовской области</h1>
+        <p class="subtitle">Урок-игра по информатике | 8 класс | 45 минут</p>
+        <p class="subtitle">Интеграция: информатика + краеведение + музыка</p>
+        <div class="badge">Формат: Урок-игра</div>
+    </header>
+
+    <!-- GOAL -->
+    <section class="goal-block">
+        <h2>🎯 Цель занятия</h2>
+        <p>Сегодня мы соединим два мира: мир кодов, в котором «говорят» компьютеры, и мир литературы, культуры нашего Тамбовского края. Мы будем расшифровывать строки тамбовских поэтов, закодированные разными способами, слушать отрывки музыкальных произведений и знакомиться с открытиями науки.</p>
+        <div class="cipher-demo">
+            Рсйгёуйнтлбсм — тлбсмтнсйнёуйл
+            <div class="hint">(Примените сдвиг на 3 влево...)</div>
+        </div>
+        <button class="show-btn" onclick="toggle(this)">Показать ответ</button>
+        <div class="answer-box">Ответ: «Победивший время времени сильнее»</div>
+    </section>
+
+    <!-- HEROES -->
+    <section class="heroes">
+        <div class="hero-card">
+            <div class="icon">🌳</div>
+            <h2>Иван Мичурин</h2>
+            <div class="role">Селекционер, академик</div>
+            <p><strong>Усадьба:</strong> Дом-музей в Мичуринске</p>
+            <p>Сын обедневшего дворянина, отчисленный из гимназии, приехал в Козлов часовщиком и за 60 лет превратился в академика. Создал более 300 сортов плодовых культур.</p>
+            <div class="detail">⚡ Работал по 19 часов в день, сам построил дом на болотистом берегу для «спартанского воспитания» гибридов.</div>
+        </div>
+        <div class="hero-card">
+            <div class="icon">🎵</div>
+            <h2>Сергей Рахманинов</h2>
+            <div class="role">Композитор, пианист</div>
+            <p><strong>Усадьба:</strong> «Ивановка»</p>
+            <p>Провёл в Ивановке 27 сезонов (1890–1917). Здесь создано 80% его дореволюционных произведений: 24 прелюдии, 9 этюдов-картин, 2 сонаты, 49 романсов.</p>
+            <div class="detail">🚜 В 1914 году купил трактор, но из-за начала Первой мировой так и не прокатился на нём.</div>
+        </div>
+        <div class="hero-card">
+            <div class="icon">✍️</div>
+            <h2>Николай Асеев</h2>
+            <div class="role">Поэт, меценат</div>
+            <p><strong>Усадьба:</strong> Дворец Асеевых в Тамбове</p>
+            <p>Михаил Асеев — фабрикант, поставлял сукно для армии (5 млн солдат). Построил дворец по проекту Льва Кекушева в стиле модерн.</p>
+            <div class="detail">🏛️ В 2014 году дворец открылся как музей после реставрации за 400 млн рублей.</div>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline-section">
+        <h2>⏱️ Структура урока</h2>
+        <div class="timeline">
+            <div class="tl-item"><div class="time">2</div><div class="label">Орг. момент</div></div>
+            <div class="tl-item"><div class="time">5</div><div class="label">Мотивация</div></div>
+            <div class="tl-item"><div class="time">3</div><div class="label">Актуализация</div></div>
+            <div class="tl-item"><div class="time">24</div><div class="label">4 станции</div></div>
+            <div class="tl-item"><div class="time">7</div><div class="label">Презентация</div></div>
+            <div class="tl-item"><div class="time">4</div><div class="label">Рефлексия</div></div>
+        </div>
+    </section>
+
+    <!-- ==================== STATION 1 ==================== -->
+    <section class="station">
+        <h2>🗝️ Станция 1: «Тайные коды великих земляков»</h2>
+        <p class="intro">Информатика изучает способы представления и защиты информации. Но задолго до компьютеров люди использовали коды. Сегодня вы — криптографы!</p>
+
+        <!-- TASK 1.1 — CAESAR CIPHER INTERACTIVE -->
+        <div class="task">
+            <h3>🎵 Задание 1: «Музыкальный шифр Рахманинова»</h3>
+            <p>Сергей Рахманинов зашифровал название своей любимой тамбовской усадьбы шифром Цезаря со сдвигом <strong>вправо на 3</strong>. Расшифруйте, сдвигая каждую букву <strong>влево на 3</strong>.</p>
+
+            <div class="cipher-game" id="caesarGame">
+                <p style="text-align:center; font-weight:600; color:var(--muted); margin-bottom:8px;">Зашифрованное сообщение:</p>
+                <div class="cipher-encrypted" id="encLetters"></div>
+                <div class="cipher-arrow">⬇️ сдвиг влево на 3 ⬇️</div>
+                <p style="text-align:center; font-weight:600; color:var(--muted); margin-bottom:8px;">Ваш ответ (нажимайте на ячейку, затем на букву):</p>
+                <div class="cipher-slots" id="cipherSlots"></div>
+
+                <p style="text-align:center; font-weight:600; color:var(--muted); margin-bottom:8px;">Алфавит (32 буквы, без Ё):</p>
+                <div class="alphabet-grid" id="alphabetGrid"></div>
+
+                <div class="cipher-controls">
+                    <button class="ctrl-btn back" onclick="backspace()">⌫ Удалить</button>
+                    <button class="ctrl-btn clear" onclick="clearAll()">🗑 Очистить</button>
+                    <button class="ctrl-btn check" onclick="checkCaesar()">✅ Проверить</button>
+                </div>
+                <div class="cipher-result" id="cipherResult"></div>
+            </div>
+        </div>
+
+        <!-- TASK 1.2 -->
+        <div class="task">
+            <h3>🍎 Задание 2: «Генетический код Мичурина»</h3>
+            <p>Закодируйте фамилию <strong>МИЧУРИН</strong> в двоичный код, используя таблицу:</p>
+            <table class="logic-table">
+                <tr><th>Буква</th><th>Код</th><th>Буква</th><th>Код</th><th>Буква</th><th>Код</th><th>Буква</th><th>Код</th></tr>
+                <tr><td>А</td><td>000</td><td>И</td><td>001</td><td>М</td><td>010</td><td>Н</td><td>011</td></tr>
+                <tr><td>Р</td><td>100</td><td>С</td><td>101</td><td>У</td><td>110</td><td>Ч</td><td>111</td></tr>
+            </table>
+            <button class="show-btn" onclick="toggle(this)">Показать ответ</button>
+            <div class="answer-box">М=010 &nbsp; И=001 &nbsp; Ч=111 &nbsp; У=110 &nbsp; Р=100 &nbsp; И=001 &nbsp; Н=011<br><br>Итого: <strong>010 001 111 110 100 001 011</strong></div>
+        </div>
+
+        <!-- TASK 1.3 -->
+        <div class="task">
+            <h3>🪙 Задание 3: «Поэтический шифр Асеева»</h3>
+            <p>Придумайте собственный шифр и зашифруйте фразу: <strong>«ТАМБОВСКИЙ ПОЭТ»</strong></p>
+            <p style="color:var(--muted); font-size:0.9em;">Примеры: замена гласных на цифры, обратный порядок слов, шифр Атбаш</p>
+        </div>
+    </section>
+
+    <!-- ==================== STATION 2 ==================== -->
+    <section class="station">
+        <h2>🧠 Станция 2: «Логика великих открытий»</h2>
+
+        <!-- TASK 2.1 -->
+        <div class="task">
+            <h3>🪙 Задание 1: «Поисковый архив»</h3>
+            <p>Расположите номера поисковых запросов в порядке возрастания количества найденных страниц (от наименьшего к наибольшему). Цифры образуют важный год.</p>
+            <ol>
+                <li>Мичурин <strong>И</strong> Рахманинов <strong>И</strong> Асеев</li>
+                <li>Мичурин <strong>ИЛИ</strong> Рахманинов <strong>ИЛИ</strong> Асеев</li>
+                <li>Мичурин <strong>И</strong> Рахманинов</li>
+                <li>Мичурин</li>
+            </ol>
+            <p>Последовательность цифр: _ _ _ _</p>
+            <button class="show-btn" onclick="toggle(this)">Показать ответ</button>
+            <div class="answer-box">
+                Правильный порядок: <strong>2 → 0 → 1 → 4</strong><br>
+                Пояснение: оператор И сужает поиск (меньше результатов), оператор ИЛИ расширяет (больше результатов).<br><br>
+                Ответ: <strong>2014 год</strong> — усадьба Асеевых открылась как музей после реставрации.
+            </div>
+        </div>
+
+        <!-- TASK 2.2 -->
+        <div class="task">
+            <h3>🍎 Задание 2: «Истинный факт»</h3>
+            <p>Вычислите: <strong>F = НЕ (A И B) ИЛИ C</strong></p>
+            <ul>
+                <li>A = «Рахманинов создал шедевры в Ивановке»</li>
+                <li>B = «Асеев — автор оперы "Скупой рыцарь"»</li>
+                <li>C = «Козлов переименован в Мичуринск в 1932»</li>
+            </ul>
+            <button class="show-btn" onclick="toggle(this)">Показать решение</button>
+            <div class="answer-box">
+                A = 1, B = 0, C = 1<br>
+                (A И B) = 1 И 0 = 0<br>
+                НЕ(0) = 1<br>
+                1 ИЛИ 1 = <strong>1 (Истина)</strong>
+            </div>
+        </div>
+
+        <!-- TASK 2.3 -->
+        <div class="task">
+            <h3>🎵 Задание 3: «Музейная головоломка»</h3>
+            <p>Распределите экспонаты между владельцами:</p>
+            <p>🎹 Старинный рояль &nbsp;|&nbsp; 🖋️ Чернильница с пером &nbsp;|&nbsp; 🌱 Селекционная яблоня</p>
+            <ul class="hints">
+                <li>Мичурин не работал с пером</li>
+                <li>Рахманинов связан с роялем</li>
+                <li>Асеев не имеет отношения к яблоне</li>
+            </ul>
+            <button class="show-btn" onclick="toggle(this)">Показать ответ</button>
+            <div class="answer-box">
+                🎹 Рахманинов — рояль<br>
+                🖋️ Асеев — чернильница<br>
+                🌱 Мичурин — яблоня
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== STATION 3 ==================== -->
+    <section class="station">
+        <h2>💻 Станция 3: «Двоичный след великих»</h2>
+
+        <!-- TASK 3.1 -->
+        <div class="task">
+            <h3>🪙 Задание 1: «Ошибка программиста»</h3>
+            <p>Дата в двоичном коде: <strong>11101110001₂</strong>. Программист ошибочно перевёл её из <strong>восьмеричной</strong> системы. Какой год он получил? На сколько лет ошибся?</p>
+            <button class="show-btn" onclick="toggle(this)">Показать решение</button>
+            <div class="answer-box">
+                Правильно (из двоичной): 11101110001₂ = <strong>1905</strong><br>
+                Ошибка (из восьмеричной): 11101110001₈ = <strong>1 225 035 777</strong><br>
+                Ошибся на: <strong>1 225 033 872 года</strong><br><br>
+                ⚠️ Вот к каким последствиям приводит неверный выбор системы счисления!
+            </div>
+        </div>
+
+        <!-- TASK 3.2 -->
+        <div class="task">
+            <h3>🎵 Задание 2: «Расшифровка музея»</h3>
+            <p>Дата открытия музея «Ивановка» в пятеричной системе: <strong>110₅ &nbsp; 11₅ &nbsp; 120311₅</strong></p>
+            <p>Переведите в десятичную систему и проверьте с известной датой: 18 июня 1982 г.</p>
+            <button class="show-btn" onclick="toggle(this)">Показать ответ</button>
+            <div class="answer-box">
+                110₅ = 1×25 + 1×5 + 0 = <strong>30</strong> (день — не совпадает с 18)<br>
+                11₅ = 1×5 + 1 = <strong>6</strong> (месяц — июнь ✓)<br>
+                120311₅ = 1×3125 + 2×625 + 0×125 + 3×25 + 1×5 + 1 = <strong>4581</strong> (год — не совпадает с 1982)<br><br>
+                Вывод: в архиве искажены день и год. Правильная дата: <strong>18 июня 1982 года</strong>.
+            </div>
+        </div>
+
+        <!-- TASK 3.3 -->
+        <div class="task">
+            <h3>🍎 Задание 3: «Архив Мичурина»</h3>
+            <p>Переведите в десятичную систему:</p>
+            <ul>
+                <li>Рост: <strong>10011011₂</strong> см</li>
+                <li>Высота двери: <strong>A0₁₆</strong> см</li>
+                <li>Высота окна: <strong>245₈</strong> см</li>
+            </ul>
+            <button class="show-btn" onclick="toggle(this)">Показать решение</button>
+            <div class="answer-box">
+                10011011₂ = <strong>155 см</strong> (рост Мичурина)<br>
+                A0₁₆ = 10×16 + 0 = <strong>160 см</strong> (дверь)<br>
+                245₈ = 2×64 + 4×8 + 5 = <strong>165 см</strong> (окно)<br><br>
+                Рост &lt; 160? Да, 155 &lt; 160 ✓<br>
+                Запас двери: 160 − 155 = <strong>5 см</strong> = <strong>101₂</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== STATION 4 ==================== -->
+    <section class="station">
+        <h2>🎧 Станция 4: «Ноты, коды, имена»</h2>
+        <p class="intro">Есть звуки, которые хочется сохранить навсегда: первые такты рахманиновской прелюдии, интонация строки Асеева, тихий комментарий Мичурина у яблони. Вы — специалисты по цифровой реставрации.</p>
+
+        <div class="task">
+            <h3>🎵 Прослушайте аудиофайлы</h3>
+            <p>Внимательно слушайте и определяйте, какому герою принадлежит каждый аудиофайл. По выполнении вы получите легенды о своих героях.</p>
+            <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:16px;">
+                <div style="background:#fff3e0; padding:16px 24px; border-radius:12px; text-align:center;">🎵 Легенда о берёзовой аллее</div>
+                <div style="background:#e8f5e9; padding:16px 24px; border-radius:12px; text-align:center;">🍎 Легенда об американском приглашении</div>
+                <div style="background:#fce4ec; padding:16px 24px; border-radius:12px; text-align:center;">🪙 Легенда о всадниках</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ARTIFACT ==================== -->
+    <section class="artifact-section">
+        <h2>🎨 Создание артефакта</h2>
+        <div class="artifact-grid">
+            <div class="artifact-card">
+                <h3>📌 Что такое артефакт?</h3>
+                <p>Это ваш творческий продукт — живая страница культурного кода Тамбовского края, созданная вашими руками на листе А3!</p>
+            </div>
+            <div class="artifact-card">
+                <h3>📝 Что включить:</h3>
+                <ul>
+                    <li>Портрет героя</li>
+                    <li>Фото усадьбы</li>
+                    <li>Расшифрованные коды</li>
+                    <li>Легенды со станций</li>
+                    <li>Ключевые даты и факты</li>
+                </ul>
+            </div>
+            <div class="artifact-card">
+                <h3>🎪 Презентация «Мировое кафе»</h3>
+                <ul>
+                    <li>Расскажите о герое</li>
+                    <li>Покажите расшифровки</li>
+                    <li>Поделитесь фактами</li>
+                    <li>Время: 2–3 минуты</li>
+                </ul>
+            </div>
+        </div>
+        <div class="materials">
+            <div class="mat-item">📄 Лист А3</div>
+            <div class="mat-item">✂️ Ножницы</div>
+            <div class="mat-item">🖊️ Маркеры</div>
+            <div class="mat-item">📎 Клей</div>
+            <div class="mat-item">🖼️ Фото</div>
+            <div class="mat-item">📜 Легенды</div>
+        </div>
+    </section>
+
+    <!-- ==================== REFLECTION ==================== -->
+    <section class="reflection">
+        <h2>🤔 Рефлексия (3-2-1)</h2>
+        <div class="refl-cards">
+            <div class="refl-card"><div class="num">3</div><div class="desc">момента, которые запомнились</div></div>
+            <div class="refl-card"><div class="num">2</div><div class="desc">факта, которые удивили</div></div>
+            <div class="refl-card"><div class="num">1</div><div class="desc">идея для применения или вопрос</div></div>
+        </div>
+    </section>
+
+    <!-- ==================== OBJECTIVES ==================== -->
+    <section class="objectives">
+        <h2>📋 Цели и задачи урока</h2>
+        <div class="obj-grid">
+            <div class="obj-card">
+                <h3>🎓 Обучающие</h3>
+                <ul>
+                    <li>Закрепить понятия кодирования и декодирования</li>
+                    <li>Научить применять шифр Цезаря, азбуку Морзе, двоичное кодирование</li>
+                    <li>Познакомить с наследием Тамбовского края</li>
+                </ul>
+            </div>
+            <div class="obj-card">
+                <h3>🚀 Развивающие</h3>
+                <ul>
+                    <li>Развивать алгоритмическое мышление</li>
+                    <li>Формировать навык работы с цифровыми инструментами</li>
+                    <li>Развивать умение работать в команде</li>
+                </ul>
+            </div>
+            <div class="obj-card">
+                <h3>❤️ Воспитательные</h3>
+                <ul>
+                    <li>Воспитывать интерес к литературному наследию</li>
+                    <li>Формировать уважение к малой родине</li>
+                    <li>Знакомить с творчеством тамбовских авторов</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Культурный код Тамбовской области | Урок-игра по информатике | 8 класс</p>
+        <p>Мичурин • Рахманинов • Асеев</p>
+    </footer>
+
+</div>
+
+<script>
+    // ===== TOGGLE ANSWERS =====
+    function toggle(btn) {
+        const box = btn.nextElementSibling;
+        box.classList.toggle('open');
+        btn.textContent = box.classList.contains('open') ? 'Скрыть ответ' : 'Показать ответ';
+    }
+
+    // ===== CAESAR CIPHER GAME =====
+    const ALPHABET = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ';
+    const ENCRYPTED = ['Л','Е','Г','Р','С','Е','Н','Г'];
+    const CORRECT   = ['И','В','А','Н','О','В','К','А'];
+    let slots = Array(8).fill('');
+    let activeSlot = 0;
+
+    function initCaesar() {
+        // Encrypted letters
+        const encDiv = document.getElementById('encLetters');
+        ENCRYPTED.forEach(l => {
+            const d = document.createElement('div');
+            d.className = 'enc-letter';
+            d.textContent = l;
+            encDiv.appendChild(d);
+        });
+
+        // Answer slots
+        renderSlots();
+
+        // Alphabet buttons
+        const grid = document.getElementById('alphabetGrid');
+        ALPHABET.split('').forEach(letter => {
+            const btn = document.createElement('button');
+            btn.className = 'alpha-btn';
+            btn.textContent = letter;
+            btn.addEventListener('click', () => placeLetter(letter));
+            grid.appendChild(btn);
+        });
+    }
+
+    function renderSlots() {
+        const container = document.getElementById('cipherSlots');
+        container.innerHTML = '';
+        slots.forEach((letter, i) => {
+            const d = document.createElement('div');
+            d.className = 'cipher-slot' + (i === activeSlot ? ' active' : '') + (letter ? ' filled' : '');
+            d.textContent = letter;
+            d.addEventListener('click', () => { activeSlot = i; renderSlots(); });
+            container.appendChild(d);
+        });
+    }
+
+    function placeLetter(letter) {
+        if (activeSlot >= slots.length) return;
+        slots[activeSlot] = letter;
+        if (activeSlot < slots.length - 1) activeSlot++;
+        renderSlots();
+        document.getElementById('cipherResult').textContent = '';
+        document.getElementById('cipherResult').className = 'cipher-result';
+    }
+
+    function backspace() {
+        if (slots[activeSlot]) {
+            slots[activeSlot] = '';
+        } else if (activeSlot > 0) {
+            activeSlot--;
+            slots[activeSlot] = '';
+        }
+        renderSlots();
+        document.getElementById('cipherResult').textContent = '';
+        document.getElementById('cipherResult').className = 'cipher-result';
+    }
+
+    function clearAll() {
+        slots = Array(8).fill('');
+        activeSlot = 0;
+        renderSlots();
+        document.getElementById('cipherResult').textContent = '';
+        document.getElementById('cipherResult').className = 'cipher-result';
+        // Remove correct/wrong classes
+        document.querySelectorAll('.cipher-slot').forEach(s => {
+            s.classList.remove('correct','wrong');
+        });
+    }
+
+    function checkCaesar() {
+        const result = document.getElementById('cipherResult');
+        const slotEls = document.querySelectorAll('.cipher-slot');
+        let allCorrect = true;
+        let allFilled = true;
+
+        slots.forEach((letter, i) => {
+            if (!letter) { allFilled = false; return; }
+            slotEls[i].classList.remove('correct','wrong');
+            if (letter === CORRECT[i]) {
+                slotEls[i].classList.add('correct');
+            } else {
+                slotEls[i].classList.add('wrong');
+                allCorrect = false;
+            }
+        });
+
+        if (!allFilled) {
+            result.textContent = '⚠️ Заполните все 8 ячеек!';
+            result.className = 'cipher-result fail';
+            return;
+        }
+
+        if (allCorrect) {
+            result.textContent = '🎉 Отлично! Усадьба — ИВАНОВКА! Вы расшифровали шифр Цезаря!';
+            result.className = 'cipher-result success';
+        } else {
+            result.textContent = '❌ Есть ошибки. Зелёные буквы верны, красные — нет. Попробуйте ещё!';
+            result.className = 'cipher-result fail';
+        }
+    }
+
+    // Init on load
+    document.addEventListener('DOMContentLoaded', initCaesar);
+</script>
+</body>
+</html>
